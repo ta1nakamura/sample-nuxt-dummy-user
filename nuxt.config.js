@@ -91,7 +91,9 @@ module.exports = {
     */
     extend(config, ctx) {
       
-      if (ctx.isServer) {
+      // if (ctx.isServer) {
+      if (process.server) {
+        console.log('--nuxt.config.js extend')
         config.externals = [
           nodeExternals({
             whitelist: [/^vuetify/]

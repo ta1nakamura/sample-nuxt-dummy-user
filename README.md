@@ -1,7 +1,9 @@
 # About this project
  - ダミーユーザーを作成してログインするためのテストプロジェクト
  - LINELOGINを使ったシステムを想定している
-
+# Module
+ nuxt2.1, mongoose, mongodb, vuetify
+ 
 # Project Structure
 ## Model
   - lineuser : dummy for LINELOGIN user

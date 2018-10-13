@@ -6,7 +6,7 @@
   <v-container fluid>
   <h1> Nuxt App template </h1>
   <pre>
-    - Nuxt 1.4
+    - Nuxt 2.1
     - Vuetify module
     - Expless
     - Axios module
