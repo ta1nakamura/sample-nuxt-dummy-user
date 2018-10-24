@@ -5,6 +5,7 @@
       <v-card-text class="px-0">{{i}}</v-card-text>
     </v-card>
   </v-flex> -->
+  <v-layout row wrap  justify-center>
   <v-flex xs12 sm8 md7 >
     <v-card>
     <!-- [Toolbar] -->
@@ -74,6 +75,7 @@
 
     </v-card>
   </v-flex>
+  </v-layout>
   
 </template>
 <script>
