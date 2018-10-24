@@ -1,11 +1,11 @@
 <template>
-<div>
+  <div>
 
-<!-- [main] -->
-<v-content>
-  <v-container fluid>
-  <h1> Nuxt App template </h1>
-  <pre>
+    <!-- [main] -->
+    <v-content>
+      <v-container fluid>
+        <h1> Nuxt App template </h1>
+        <pre>
     - Nuxt 2.1
     - Vuetify module
     - Expless
@@ -15,80 +15,78 @@
     - 
     - dummyLogin (test for LINELOGIN)
     - TodoList
-  </pre>
-  <v-text-field label="input dummy lineuserid" v-model="dummyid"></v-text-field>
-  <v-btn @click="onDummyLogin()">Login</v-btn>
-  <!-- <p>{{items}}</p> -->
-  <hr>
-  <h2>this.$store.getters.currentUser</h2>
-  {{currentUser}}
-  <hr>
+        </pre>
+        <v-text-field v-model="dummyid" label="input dummy lineuserid"/>
+        <v-btn @click="onDummyLogin()">Login</v-btn>
+        <!-- <p>{{items}}</p> -->
+        <hr>
+        <h2>this.$store.getters.currentUser</h2>
+        {{ currentUser }}
+        <hr>
   
 
-  </v-container>
-</v-content>
-<!-- [footer] -->
-<v-footer  app inset>
+      </v-container>
+    </v-content>
+    <!-- [footer] -->
+    <v-footer app inset>
       <span class="white--text">&copy; 2018 footer</span>
-</v-footer>
+    </v-footer>
 
-</div>
+  </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      dummyid:'test',
+      dummyid: "test"
       // items:null
-    };
+    }
   },
-  async asyncData(context){
-    console.log('--asyncData');
-    try{
-      let data = await context.app.$axios.$get('/api/test/3');
-      console.log(data);
-    }catch(e){
-      console.log(e);
+  async asyncData(context) {
+    console.log("--asyncData")
+    try {
+      let data = await context.app.$axios.$get("/api/test/3")
+      console.log(data)
+    } catch (e) {
+      console.log(e)
       context.error(e)
     }
   },
-  created(){
-    console.log('--crated')
+  computed: {
+    currentUser() {
+      return this.$store.getters.currentUser
+    }
   },
-  computed:{
-    currentUser(){
-      return this.$store.getters.currentUser;
-    },
+  created() {
+    console.log("--crated")
   },
-  methods:{
-    async onClickTest(context){
-      console.log('--onClickTest');
-      try{
-        let data = await this.$axios.$get('/api/todos');
-        console.log(data);
+  methods: {
+    async onClickTest(context) {
+      console.log("--onClickTest")
+      try {
+        let data = await this.$axios.$get("/api/todos")
+        console.log(data)
         this.items = data.todos
-      }catch(e){
-        console.log(e);
+      } catch (e) {
+        console.log(e)
       }
     },
-    async onDummyLogin(context){
-      console.log('--onDummyLogin');
-      if(!this.dummyid) {
-        console.log('no dumyid')
+    async onDummyLogin(context) {
+      console.log("--onDummyLogin")
+      if (!this.dummyid) {
+        console.log("no dumyid")
         return
       }
-      try{
-        
-        let data = await this.$axios.$post('/api/dummylogin',{
-          lineuserid : this.dummyid
-        });
-        console.log(data);
-        this.$store.commit('setLineuser', data.lineuser);
-      }catch(e){
-        console.log(e);
+      try {
+        let data = await this.$axios.$post("/api/dummylogin", {
+          lineuserid: this.dummyid
+        })
+        console.log(data)
+        this.$store.commit("setLineuser", data.lineuser)
+      } catch (e) {
+        console.log(e)
       }
     }
-  }//end methods
-};
+  } //end methods
+}
 </script>
-
