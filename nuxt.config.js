@@ -6,10 +6,11 @@ const bodyParser = require("body-parser")
 const session = require("express-session")
 //setBaseURL for Axios
 var env = process.env.NODE_ENV || "development"
+let API_URL
 if (env === "development" || env === "test") {
-  var API_URL = "http://localhost:3000"
+  API_URL = "http://localhost:3000"
 } else {
-  var API_URL = process.env.API_URL
+  API_URL = process.env.API_URL
 }
 
 module.exports = {
@@ -88,7 +89,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
+    extend(config) {
       // if (ctx.isServer) {
       if (process.server) {
         console.log("--nuxt.config.js extend")

@@ -2,7 +2,8 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
+    mocha:true,
   },
   parserOptions: {
     parser: 'babel-eslint'
@@ -16,13 +17,15 @@ module.exports = {
   ],
   // *.vue ファイルを lint にかけるために必要
   plugins: [
-    'vue'
+    'vue',
+    // 'mocha'
   ],
   // ここにカスタムルールを追加します。
   rules: {
     "semi": [2, "never"],
     "no-console": "off",
     "vue/max-attributes-per-line": "off",
-    "prettier/prettier": ["error", { "semi": false }]
+    "prettier/prettier": ["error", { "semi": false }],
+    // "mocha/no-exclusive-tests": "error",
   }
 }

@@ -1,6 +1,6 @@
 import Vuex from "vuex"
-import { STATUS_CODES } from "http"
-const SIGIN_TIMEOUT = 600
+// import { STATUS_CODES } from "http"
+// const SIGIN_TIMEOUT = 600
 
 const createStore = () => {
   return new Vuex.Store({
@@ -30,11 +30,7 @@ const createStore = () => {
           headers: { "x-auth": vuexContext.state.lineuser.id_token }
         }
         try {
-          const res = await this.$axios.post(
-            "/api/todos",
-            { text: newTask },
-            config
-          )
+          await this.$axios.post("/api/todos", { text: newTask }, config)
           vuexContext.dispatch("fetchTodo")
         } catch (err) {
           console.log(err)
@@ -46,7 +42,7 @@ const createStore = () => {
           headers: { "x-auth": vuexContext.state.lineuser.id_token }
         }
         try {
-          const res = await this.$axios.patch(
+          await this.$axios.patch(
             `/api/todos/${todo._id}`,
             { completed: !todo.completed },
             config

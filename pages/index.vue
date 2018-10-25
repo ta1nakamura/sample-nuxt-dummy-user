@@ -61,7 +61,7 @@ export default {
     console.log("--crated")
   },
   methods: {
-    async onClickTest(context) {
+    async onClickTest() {
       console.log("--onClickTest")
       try {
         let data = await this.$axios.$get("/api/todos")
@@ -71,7 +71,7 @@ export default {
         console.log(e)
       }
     },
-    async onDummyLogin(context) {
+    async onDummyLogin() {
       console.log("--onDummyLogin")
       if (!this.dummyid) {
         console.log("no dumyid")

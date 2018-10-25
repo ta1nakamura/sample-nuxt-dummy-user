@@ -1,6 +1,7 @@
 require("../config/config.js")
 const { ObjectID } = require("mongodb")
-const { mongoose } = require("../db/mongoose")
+// const { mongoose } = require("../db/mongoose")
+require("../db/mongoose")
 const { Todo } = require("../models/todo")
 
 const userOneId = new ObjectID()

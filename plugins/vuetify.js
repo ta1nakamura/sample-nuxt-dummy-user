@@ -1,6 +1,6 @@
 import Vue from "vue"
 import Vuetify from "vuetify"
-import colors from "vuetify/es5/util/colors"
+// import colors from "vuetify/es5/util/colors"
 
 Vue.use(Vuetify, {
   // theme: {

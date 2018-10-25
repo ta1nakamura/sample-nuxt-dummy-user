@@ -21,7 +21,7 @@ app.use(cors(corsOptions))
 app.use(session(session_options)) // add for LINELOGIN
 app.use(bodyParser.json())
 app.use(path, handler)
-port = "3000"
+const port = "3000"
 app.listen(port, () => {
   console.log(`Started up apptest port:${port}`)
 })

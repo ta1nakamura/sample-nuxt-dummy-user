@@ -4,7 +4,7 @@ const express = require("express")
 require("./config/config.js") //config for mongodb,
 const _ = require("lodash")
 const { ObjectID } = require("mongodb")
-const { mongoose } = require("./db/mongoose")
+require("./db/mongoose")
 const { Todo } = require("./models/todo")
 const { LineUser } = require("./models/lineuser")
 const jwt = require("jsonwebtoken")
@@ -71,7 +71,7 @@ router.get("/todos/:id", authenticate, (req, res) => {
       }
       return res.status(200).send({ todo })
     })
-    .catch(e => {
+    .catch(() => {
       return res.status(400).send()
     })
 })
@@ -122,7 +122,7 @@ router.patch("/todos/:id", authenticate, (req, res) => {
       }
       res.send({ todo })
     })
-    .catch(e => {
+    .catch(() => {
       res.status(400).send()
     })
 })
@@ -149,7 +149,7 @@ router.post("/dummylogin/", async (req, res) => {
     id_token: token
   }
   try {
-    doc = await LineUser.findOneAndUpdate(
+    const doc = await LineUser.findOneAndUpdate(
       { lineuserid: userinfo.lineuserid },
       {
         displayname: userinfo.displayname,

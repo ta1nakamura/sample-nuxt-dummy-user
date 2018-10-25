@@ -22,7 +22,7 @@ describe("POST /todos", () => {
       .expect(res => {
         expect(res.body.text).toBe(text)
       })
-      .end((err, res) => {
+      .end(err => {
         if (err) {
           return done(err)
         }
@@ -43,7 +43,7 @@ describe("POST /todos", () => {
       .set("x-auth", users[0].tokens[0].token)
       .send({})
       .expect(400)
-      .end((err, res) => {
+      .end(err => {
         if (err) {
           return done(err)
         }
@@ -118,7 +118,7 @@ describe("DELETE /todos/:id", () => {
       .expect(res => {
         expect(res.body.todo._id).toBe(hexId)
       })
-      .end((err, res) => {
+      .end(err => {
         if (err) {
           return done(err)
         }
@@ -139,7 +139,7 @@ describe("DELETE /todos/:id", () => {
       .delete(path + `/todos/${hexId}`)
       .set("x-auth", users[1].tokens[0].token)
       .expect(404)
-      .end((err, res) => {
+      .end(err => {
         if (err) {
           return done(err)
         }
@@ -345,7 +345,7 @@ describe("POST /users/login", () => {
         // expect(res.headers['x-auth']).toNotExist();
         expect(res.headers["x-auth"]).toBeFalsy()
       })
-      .end((err, res) => {
+      .end(err => {
         if (err) {
           return done(err)
         }
@@ -372,7 +372,7 @@ describe("DELETE /users/me/token", () => {
       .expect(res => {
         expect(res.body).toEqual({})
       })
-      .end((err, res) => {
+      .end(err => {
         if (err) {
           return done(err)
         }

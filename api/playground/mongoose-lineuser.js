@@ -1,6 +1,7 @@
 require("../config/config.js")
 const { ObjectID } = require("mongodb")
-const { mongoose } = require("../db/mongoose")
+// const { mongoose } = require("../db/mongoose")
+require("../db/mongoose")
 const { LineUser } = require("../models/lineuser")
 const jwt = require("jsonwebtoken")
 // const JWT_SECRET='secret';
@@ -44,7 +45,7 @@ const findAll = async () => {
 const updateLineuser = async () => {
   const targetLineuserid = "dummy0002" //same id
   try {
-    const doc = await LineUser.findOneAndUpdate(
+    await LineUser.findOneAndUpdate(
       { lineuserid: targetLineuserid },
       {
         displayname: "Update-002",
@@ -53,7 +54,7 @@ const updateLineuser = async () => {
       { upsert: true }
     )
   } catch (e) {
-    console.log("[upsert-error]", err)
+    console.log("[upsert-error]", e)
   }
 }
 const testJWT = async () => {
@@ -75,9 +76,9 @@ const testJWT = async () => {
 const execMain = async () => {
   console.log("--start")
   testJWT()
-  // await initLineusers()
-  // await updateLineuser()
-  // await findAll()
+  await initLineusers()
+  await updateLineuser()
+  await findAll()
   console.log("--end")
 }
 execMain()
